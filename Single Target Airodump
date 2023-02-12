@@ -4,9 +4,9 @@ MAC="08:00:46:75:69:33"
 
 read -ep "BSSID: " bsid
 
-read -ep "Channel: " CHAN
+read -ep "Channel: " chan
 
-read -ep "File Name: " TXT
+read -ep "File Name: " txt
 
 sudo airmon-ng check kill
 sleep .1
@@ -18,4 +18,4 @@ sudo macchanger -m $MAC wlan1mon
 sleep .1
 sudo ifconfig wlan1mon up
 sleep .1
-sudo airodump-ng -w $TXT --bssid $bsid --channel $CHAN wlan1mon
+sudo airodump-ng -w $txt --bssid $bsid --channel $chan wlan1mon
