@@ -1,0 +1,21 @@
+#!/bin/bash
+
+MAC="08:00:46:75:69:33"
+
+read -ep "BSSID: " bsid
+
+read -ep "Channel: " CHAN
+
+read -ep "File Name: " TXT
+
+sudo airmon-ng check kill
+sleep .1
+sudo airmon-ng start wlan1
+sleep .1
+sudo ifconfig wlan1mon down
+sleep .1
+sudo macchanger -m $MAC wlan1mon
+sleep .1
+sudo ifconfig wlan1mon up
+sleep .1
+sudo airodump-ng -w $TXT --bssid $bsid --channel $CHAN wlan1mon
